@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
         playerLives -= 1;
         if(playerLives <= 0)
         {
+            // CONNOR DEATH GOES HERE
             print("Player has died");
         }
     }

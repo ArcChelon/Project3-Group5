@@ -44,7 +44,7 @@ public class ShooterAttack : MonoBehaviour
     }
     private IEnumerator firstTimeCoolDown()
     {
-        yield return new WaitForSeconds(firstTimeCooldown);
+        yield return new WaitForSeconds(coolDownTime);
         StartCoroutine(tripleShot());
     }
     private IEnumerator standardCoolDown()
@@ -55,7 +55,7 @@ public class ShooterAttack : MonoBehaviour
     }
     private IEnumerator tripleShot()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         if(timesShot != 3)
         {
             EnemyShoot(this.gameObject.transform.position.z);
