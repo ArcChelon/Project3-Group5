@@ -44,6 +44,24 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Triggered");
+        if (other.CompareTag("EndZone"))
+        {
+            this.gameObject.SetActive(false);
+        }
+        if (other.CompareTag("MiddleZone"))
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
+
+
+
     private void SpawnEnemy(int enemies)
     {
         int[] positions = new int[enemies];

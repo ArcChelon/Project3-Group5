@@ -81,5 +81,9 @@ public class PlayerMovement : MonoBehaviour
             this.gameObject.GetComponent<PlayerHealth>().damagePlayer();
             Destroy(other.gameObject);
         }
+        if (other.CompareTag("EndZone"))
+        {
+            other.GetComponent<EndZone>().levelChanger();
+        }
     }
 }
