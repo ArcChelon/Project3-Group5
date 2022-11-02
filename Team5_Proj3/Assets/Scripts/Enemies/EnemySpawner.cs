@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     private bool spawnAble = true;
-    [SerializeField] Transform enemie;
+    [SerializeField] Transform shooter;
+    [SerializeField] Transform runner;
     [SerializeField] float coolDownTime;
     
     [SerializeField] Transform targetPosition;
@@ -66,21 +67,58 @@ public class EnemySpawner : MonoBehaviour
             
             for(int i = 0; i < positions.Length; i++)
             {
+                
                 if(positions[i] == 1)
                 {
-                    Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 0);
-                    Transform unit = Instantiate(enemie,intPosition,rotation);
+                    Transform enemie;
+                    int enemyPicked = Random.Range(1, 3);
+                    if(enemyPicked == 1)
+                    {
+                        enemie = shooter;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 0);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
+                    else
+                    {
+                        enemie = runner;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 0);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
+                    
                 }
                 else if (positions[i] == 2)
                 {
-                    Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 3);
-                    
-                    Transform unit = Instantiate(enemie, intPosition, rotation);
+                    Transform enemie;
+                    int enemyPicked = Random.Range(1, 3);
+                    if (enemyPicked == 1)
+                    {
+                        enemie = shooter;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 3);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
+                    else
+                    {
+                        enemie = runner;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, 3);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
                 }
                 else if (positions[i] == 3)
                 {
-                    Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, -3);
-                    Transform unit = Instantiate(enemie, intPosition, rotation);
+                    Transform enemie;
+                    int enemyPicked = Random.Range(1, 3);
+                    if (enemyPicked == 1)
+                    {
+                        enemie = shooter;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, -3);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
+                    else
+                    {
+                        enemie = runner;
+                        Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, -3);
+                        Transform unit = Instantiate(enemie, intPosition, rotation);
+                    }
                 }
             }
             
@@ -88,25 +126,7 @@ public class EnemySpawner : MonoBehaviour
 
 
         }
-        else
-        {
-            int position1 = Random.Range(1, 4);
-            if (position1 == 1)
-            {
-                Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-                Transform unit = Instantiate(enemie, intPosition, rotation);
-            }
-            else if (position1 == 2)
-            {
-                Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z + 3);
-                Transform unit = Instantiate(enemie, intPosition, rotation);
-            }
-            else if (position1 == 3)
-            {
-                Vector3 intPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 3);
-                Transform unit = Instantiate(enemie, intPosition, rotation);
-            }
-        }
+        
         
     }
 }

@@ -170,8 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73387ad1dc99054fa538364f9c0dc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemie: {fileID: 1450819570542537508, guid: 23de31f0ed16b5e489a22c8321e61cb1, type: 3}
-  coolDownTime: 7
+  shooter: {fileID: 1450819570542537508, guid: 23de31f0ed16b5e489a22c8321e61cb1, type: 3}
+  runner: {fileID: 6393574657973702445, guid: cfe88826ae04d5e4e831d6273ef8ffda, type: 3}
+  coolDownTime: 5
   targetPosition: {fileID: 12104852}
 --- !u!65 &12104854
 BoxCollider:
