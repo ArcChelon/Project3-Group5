@@ -7,10 +7,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
+    private bool groundedPlayer;
+    private Vector3 playerVelocity;
 
     private PlayerInput playerInput;
     private InputAction upAction;
     private InputAction downAction;
+    private InputAction jumpAction;
 
     [SerializeField] float moveSpeed;
     [SerializeField] Transform endTargetMiddle;
@@ -39,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         this.transform.position = Vector3.MoveTowards(transform.position, currentEndTarget.position, Time.deltaTime * moveSpeed);
+
+       
+
+
+
+
     }
 
     private void Movement()
