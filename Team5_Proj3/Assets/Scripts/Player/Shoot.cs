@@ -26,12 +26,18 @@ public class Shoot : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
         playerInput = GetComponent<PlayerInput>();
         controller = GetComponent<CharacterController>();
         shootAction = playerInput.actions["Shoot"];
     }
     private void Start()
     {
+        GameObject pBullet = GameObject.Find("Bullet(Clone)");
+        if(pBullet != null)
+        {
+            Destroy(pBullet);
+        }
         positionStart = new Vector3(gunBarrel.position.x, gunBarrel.position.y, gunBarrel.position.z);
         bulletRotation = gunBarrel.rotation;
     }
@@ -51,9 +57,12 @@ public class Shoot : MonoBehaviour
     {
         
         Transform Shot = Instantiate(bullet, positionStart, bulletRotation);
-
+        
+        
         Vector3 shootDir = (targetPosition.position - positionStart).normalized;
         Shot.GetComponent<Bullet>().Setup(shootDir, "Player");
+        
+        
 
 
 

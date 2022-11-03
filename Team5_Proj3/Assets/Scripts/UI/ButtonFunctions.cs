@@ -39,8 +39,13 @@ public class ButtonFunctions : MonoBehaviour
     public void OnQuitButtonClick()
     {
         //ButtonClick();
+        print("Click");
         Application.Quit();
 
+    }
+    public void OnClickRestartButtton()
+    {
+        SceneManager.LoadScene("Level_Select");
     }
    
     // Start is called before the first frame update
