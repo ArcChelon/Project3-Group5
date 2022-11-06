@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
             // CONNOR DEATH GOES HERE
             print("Player has died");
             DeathPanel.SetActive(true);
+            //time stop
+            Time.timeScale = 0;
         }
     }
 

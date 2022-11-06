@@ -10,12 +10,14 @@ public class ButtonFunctions : MonoBehaviour
     {
         //ButtonClick();
         SceneManager.LoadScene("Level_1");
+        Time.timeScale = 1;
 
     }
     public void OnLevelSelectButtonClick()
     {
         //ButtonClick();
         SceneManager.LoadScene("Level_Select");
+        Time.timeScale = 1;
 
     }
     public void OnHelpButtonClick()
