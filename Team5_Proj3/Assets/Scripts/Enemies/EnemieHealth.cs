@@ -7,6 +7,8 @@ public class EnemieHealth : MonoBehaviour
 
     [SerializeField] float shooterHealth;
     [SerializeField] float runnerHealth;
+    [SerializeField] float droneHealth;
+    
     private float iterationHealth;
 
 
@@ -47,6 +49,10 @@ public class EnemieHealth : MonoBehaviour
             case "Runner":
                 iterationHealth = runnerHealth;
                 
+                break;
+            case "Drone":
+                iterationHealth = droneHealth;
+
                 break;
         }
     }
