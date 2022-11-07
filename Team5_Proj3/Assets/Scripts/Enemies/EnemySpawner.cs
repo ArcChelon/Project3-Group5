@@ -9,9 +9,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform shooter;
     [SerializeField] Transform runner;
     [SerializeField] Transform drone;
+    [SerializeField] Transform car;
     [SerializeField] float coolDownTime;
     private string currentScene;
-    
+
+
+    public bool isCarSpawned = false;
+    public bool isDroneSpawned = false;
+    private float droneLane;
+
+
+
     [SerializeField] Transform targetPosition;
     private Vector3 currentPosition;
     private Quaternion rotation;
@@ -21,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int shooterWeight;
     [SerializeField] int runnerWeight;
     [SerializeField] int droneWeight;
+    [SerializeField] int carWeight;
     [Header("Enemies to spawn")]
     [SerializeField] int spawnCount;
 
@@ -54,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
                 StartCoroutine(coolDownSpawn());
             }
         }
+        determineEnemyCondition();
     }
 
 
@@ -82,6 +92,8 @@ public class EnemySpawner : MonoBehaviour
         positions[2] = -3;
         float previous1 = 5;
         float previous2 = 5;
+        float dLane = droneLane;
+        
         if (enemies == 2)
         {
 
@@ -90,10 +102,10 @@ public class EnemySpawner : MonoBehaviour
                 int chosen = Random.Range(0, 3);
 
 
-                if (chosen == (int)previous1)
+                if (chosen == (int)previous1 || positions[chosen] == dLane)
                 {
 
-                    while (chosen == (int)previous1)
+                    while (chosen == (int)previous1 || positions[chosen] == dLane)
                     {
                         chosen = Random.Range(0, 3);
                     }
@@ -151,22 +163,25 @@ public class EnemySpawner : MonoBehaviour
         int shooterChance = Random.Range(1, 100) + shooterWeight;
         int runnerChance = Random.Range(1, 100) + runnerWeight;
         int droneChance = Random.Range(1, 100) + droneWeight;
-        if (shooterChance > runnerChance && shooterChance > droneChance)
+        int carChance = Random.Range(1, 100) + carWeight;
+        if (shooterChance > runnerChance && shooterChance > droneChance && shooterChance > carChance)
         {
             Transform chosen = shooter;
             return chosen;
         }
-        else if (runnerChance > shooterChance && runnerChance > droneChance)
+        else if (runnerChance > shooterChance && runnerChance > droneChance && runnerChance > carChance)
         {
             Transform chosen = runner;
             return chosen;
         }
-        else if (droneChance > shooterChance && droneChance > runnerChance)
+        else if (droneChance > shooterChance && droneChance > runnerChance && droneChance > carChance)
         {
             Transform chosen;
-            if (currentScene == "Level_2")
+            if (currentScene == "Level_2" && isDroneSpawned == false)
             {
                  chosen = drone;
+                isDroneSpawned = true;
+                spawnCount = 2;
             }
             else
             {
@@ -175,12 +190,51 @@ public class EnemySpawner : MonoBehaviour
             
             return chosen;
         }
+        else if(carChance > shooterChance && carChance > runnerChance && carChance > droneChance)
+        {
+            Transform chosen;
+            if(currentScene == "Level_2" && isCarSpawned == false)
+            {
+                chosen = car;
+                isCarSpawned = true;
+                return chosen;
+
+            }
+            else
+            {
+                chosen = runner;
+                return chosen;
+            }
+        }
         else
         {
-            Transform chosen = drone;
+            Transform chosen = runner;
             return chosen;
         }
 
 
+    }
+    private void determineEnemyCondition()
+    {
+        if (GameObject.FindWithTag("Drone") != null)
+        {
+
+            droneLane = GameObject.FindWithTag("Drone").GetComponent<Transform>().position.z;
+            isDroneSpawned = true;
+        }
+        else
+        {
+
+            spawnCount = 3;
+            isDroneSpawned = false;
+        }
+        if (GameObject.FindWithTag("Car") != null)
+        {
+            isCarSpawned = true;
+        }
+        else
+        {
+            isCarSpawned = false;
+        }
     }
 }

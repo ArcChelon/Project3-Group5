@@ -48,6 +48,11 @@ public class Bullet : MonoBehaviour
             other.GetComponent<EnemieHealth>().damageEnemie(1);
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Car") && parentShooter == "Player")
+        {
+            other.GetComponent<EnemieHealth>().damageEnemie(0);
+            Destroy(gameObject);
+        }
         else if (other.CompareTag("Player") && parentShooter == "Shooter")
         {
            

@@ -8,6 +8,7 @@ public class EnemieHealth : MonoBehaviour
     [SerializeField] float shooterHealth;
     [SerializeField] float runnerHealth;
     [SerializeField] float droneHealth;
+    [SerializeField] float carHealth;
     
     private float iterationHealth;
 
@@ -20,7 +21,11 @@ public class EnemieHealth : MonoBehaviour
     void Start()
     {
         determineEnemie();
-        Destroy(gameObject, 15f);
+        if(this.gameObject.tag != "Drone")
+        {
+            Destroy(gameObject, 15f);
+        }
+            
         if(this.gameObject.transform.position.z > 3.5)
         {
             this.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 3);
