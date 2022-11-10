@@ -8,21 +8,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int playerLives;
     [SerializeField] TMP_Text healthText;
     [SerializeField] GameObject DeathPanel;
-    private bool isDamageAble = true;
-    private int countingFrames;
 
 
 
     public void damagePlayer()
     {
-        if (isDamageAble)
-        {
-            playerLives -= 1;
-            healthText.text = playerLives.ToString() + "/5";
-            isDamageAble = false;
-            StartCoroutine(immunityFrames());
-        }
-        
+        playerLives -= 1;
+        healthText.text = playerLives.ToString() + "/5";
         if (playerLives <= 0)
         {
             // CONNOR DEATH GOES HERE
@@ -32,29 +24,7 @@ public class PlayerHealth : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-    private IEnumerator immunityFrames()
-    {
-        SpriteRenderer color = gameObject.transform.Find("Sprite").GetComponent<SpriteRenderer>();
-        Color OGColor = color.color;
-        color.color = Color.red;
-        
-        yield return new WaitForSeconds(1);
-        color.color = OGColor;
-        if (countingFrames < 3)
-        {
-            print("Counting");
-            
-            countingFrames += 1;
-            StartCoroutine(immunityFrames());
-        }
-        else
-        {
-            
-            countingFrames = 0;
-            isDamageAble = true;
-        }
-        
-    }
+
 
     // Start is called before the first frame update
     void Start()
