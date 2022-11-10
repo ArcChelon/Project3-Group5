@@ -1207,6 +1207,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 27.118, y: 0, z: 0}
 --- !u!1 &1731172322
@@ -1240,6 +1241,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 27.118, y: 0, z: 0}
+>>>>>>> parent of abd775d (Level2)
 --- !u!1 &1732705343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8376126506467355989, guid: ed22e0e4627647c449e3c2d176292a57, type: 3}

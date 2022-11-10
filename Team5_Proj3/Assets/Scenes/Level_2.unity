@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &28857757
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +223,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 31.935, y: 0, z: 0}
+=======
+>>>>>>> parent of abd775d (Level2)
 --- !u!1001 &539158809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,6 +556,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7187651537144883081, guid: a297875655f97dd40b336e258eb9b865, type: 3}
   m_PrefabInstance: {fileID: 1133544214}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1331501765
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +654,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of abd775d (Level2)
 --- !u!1001 &1668734887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -769,6 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!114 &1668734890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5477700775981172337, guid: ed22e0e4627647c449e3c2d176292a57, type: 3}
@@ -780,3 +787,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> parent of abd775d (Level2)
