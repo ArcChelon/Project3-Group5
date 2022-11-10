@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 1668734889}
     - target: {fileID: 4962941443137941534, guid: b756c89fd8320bc4bb35f79c40a6d42a, type: 3}
       propertyPath: playerLives
-      value: 200
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4962941444218721276, guid: b756c89fd8320bc4bb35f79c40a6d42a, type: 3}
       propertyPath: m_LocalRotation.w
