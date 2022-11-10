@@ -21,12 +21,9 @@ public class EnemieHealth : MonoBehaviour
     void Start()
     {
         determineEnemie();
-        if(this.gameObject.tag != "Drone")
-        {
-            Destroy(gameObject, 15f);
-        }
-            
-        if(this.gameObject.transform.position.z > 3.5)
+        
+
+        if (this.gameObject.transform.position.z > 3.5)
         {
             this.gameObject.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 3);
         }
@@ -66,7 +63,28 @@ public class EnemieHealth : MonoBehaviour
         iterationHealth -= damage;
         if(iterationHealth <= 0)
         {
+            awardPoints();
             Destroy(this.gameObject);
         }
+    }
+    private void awardPoints()
+    {
+        if(gameObject.tag == "Runner")
+        {
+            GameObject.FindWithTag("Player").GetComponent<ScoreKeeper>().scoreKeeper(10);
+        }
+        else if(gameObject.tag == "Shooter")
+        {
+            GameObject.FindWithTag("Player").GetComponent<ScoreKeeper>().scoreKeeper(15);
+        }
+        else if(gameObject.tag == "Drone")
+        {
+            GameObject.FindWithTag("Player").GetComponent<ScoreKeeper>().scoreKeeper(10);
+        }
+    }
+    private IEnumerator deathWait()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
