@@ -46,6 +46,7 @@ public class ShooterAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(coolDownTime);
         StartCoroutine(tripleShot());
+        Destroy(gameObject, 15f);
     }
     private IEnumerator standardCoolDown()
     {

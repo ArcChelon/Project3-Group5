@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool isCarSpawned = false;
     public bool isDroneSpawned = false;
-    private float droneLane;
+    private float droneLane = 5;
 
 
 
@@ -49,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        determineEnemyCondition();
         currentPosition = new Vector3(targetPosition.position.x, targetPosition.position.y, targetPosition.position.z);
         if (spawnAble)
         {
@@ -63,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
                 StartCoroutine(coolDownSpawn());
             }
         }
-        determineEnemyCondition();
+        
     }
 
 
@@ -185,7 +186,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                 chosen = shooter;
+                chosen = ReplacementSpawn();
             }
             
             return chosen;
@@ -202,7 +203,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                chosen = runner;
+                chosen = ReplacementSpawn();
                 return chosen;
             }
         }
@@ -214,21 +215,37 @@ public class EnemySpawner : MonoBehaviour
 
 
     }
+    private Transform ReplacementSpawn()
+    {
+        int replacement = Random.Range(0, 1);
+        Transform chosen;
+        if(replacement == 0)
+        {
+            chosen = shooter;
+        }
+        else
+        {
+            chosen = runner;
+        }
+        return chosen;
+    }
     private void determineEnemyCondition()
     {
-        if (GameObject.FindWithTag("Drone") != null)
+        
+        if (GameObject.FindWithTag("Drone") != null && currentScene == "Level_2")
         {
 
             droneLane = GameObject.FindWithTag("Drone").GetComponent<Transform>().position.z;
+            
             isDroneSpawned = true;
         }
-        else
+        else if(GameObject.FindWithTag("Drone") == null && currentScene == "Level_2")
         {
 
             spawnCount = 3;
             isDroneSpawned = false;
         }
-        if (GameObject.FindWithTag("Car") != null)
+        if (GameObject.FindWithTag("Car") != null && currentScene == "Level_2")
         {
             isCarSpawned = true;
         }
